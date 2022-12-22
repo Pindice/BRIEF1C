@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Bonjour {{ user.username }} !
+  <p>
+    <a href="{% url 'ventesproduits' %}">Ventes par Produits</a>
+    <br>
+    <a href="{% url 'ventespays' %}">Ventes par Pays</a>
+    <br>
+    <a href="{% url 'import' %}">Importation</a>
+    <br>
+    <a href="{% url 'logout' %}">Logout</a>
+
+  </p>
+
+
+
+
+{% else %}
+  <p>Vous n'êtes pas connecté</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+
+</html>

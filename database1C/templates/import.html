@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+{% extends 'base.html' %}
+
+{% block title %}Import{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+
+<form enctype="multipart/form-data" method="post" action="">
+    {% csrf_token %}
+    {{ form.file }}
+    <input type="submit" value="Importer" id="myfile" name="myfile">
+</form>
+</html>
+
+
+{% else %}
+<p>Vous ne pouvez pas accéder à cette page, car vous n'êtes pas connecté</p>
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

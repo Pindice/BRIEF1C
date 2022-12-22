@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}VentesPays{% endblock %}
+
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+
+<script>
+  liste_datas_pays={{ liste_datas_pays|safe }};
+  liste_labels_pays={{ liste_labels_pays|safe }};
+</script>
+
+<div>
+  <canvas id="ChartPays"></canvas>
+</div>
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+<script src="{% static 'graphpays.js' %}"></script>
+
+{% else %}
+  <p>Vous ne pouvez pas accéder à cette page, car vous n'êtes pas connecté</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}

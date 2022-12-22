@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}VentesProduits{% endblock %}
+
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+
+<script>
+  liste_datas_produits={{ liste_datas_produits|safe }};
+  liste_labels_produits={{ liste_labels_produits|safe }};
+</script>
+
+<div>
+  <canvas id="ChartProduits"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="{% static 'graphproduits.js' %}"></script>
+
+{% else %}
+  <p>Vous ne pouvez pas accéder à cette page, car vous n'êtes pas connecté</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
